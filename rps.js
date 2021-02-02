@@ -1,0 +1,74 @@
+//Run series of games
+
+game();
+
+//Functions
+
+function computerPlay(){
+    choice = Math.floor(Math.random() * 3);
+    if(choice === 0){
+        return "rock";
+    } else if(choice === 1){
+        return "paper";
+    } else return "scissors";
+}
+
+function playRound(playerSelection,computerSelection){
+    switch(playerSelection){
+        case "rock":
+            if(computerSelection === "scissors"){
+                return `You Win! Rock beats Scissors. The score is ${playerScore+1} - ${compScore}.`
+            } else if(computerSelection === "paper"){
+                return `You Lose! Paper beats Rock. The score is ${playerScore} - ${compScore+1}.`
+            } else return `Both players picked rock. It's a tie. It's still ${playerScore} - ${compScore}.`
+        case "paper":
+            if(computerSelection === "rock"){
+                return `You Win! Paper beats Rock. The score is ${playerScore+1} - ${compScore}.`
+            } else if(computerSelection === "scissors"){
+                return `You Lose! Scissors beats Paper. The score is ${playerScore} - ${compScore+1}.`
+            } else return `Both players picked paper. It's a tie. It's still ${playerScore} - ${compScore}.`
+        case "scissors":
+            if(computerSelection === "paper"){
+                return `You Win! Scissors beats Paper. The score is ${playerScore+1} - ${compScore}.`
+            } else if(computerSelection === "rock"){
+                return `You Lose! Rock beats Scissors. The score is ${playerScore} - ${compScore+1}.`
+            } else return `Both players picked scissors. It's a tie. It's still ${playerScore} - ${compScore}.`
+        default:
+            if(!playerSelection) return;
+            playerSelection = prompt("Invalid selection. Please type rock, paper or scissors. Not case sensitive.").toLowerCase();
+            return playRound(playerSelection,computerSelection);
+    }
+}
+
+function game(){
+    playerScore = 0;
+    compScore = 0;
+    for(let i = 0; i < 5; i++){
+        playerSelection = prompt("Rock Paper Scissors. Enter your selection.").toLowerCase();
+        computerSelection = computerPlay();
+        result = playRound(playerSelection,computerSelection);
+        result;
+        if(result === undefined) return;
+        if(result[4] === "W"){
+            playerScore += 1
+        } else if (result[4] === "L"){
+            compScore += 1;
+        } 
+        alert(result);
+        console.log(result);
+    }
+    
+    if(playerScore > compScore){
+        alert(`Congratulations! You have won the series ${playerScore} - ${compScore}!`);
+        console.log(`Congratulations! You have won the series ${playerScore} - ${compScore}!`);
+    } else if(compScore > playerScore){
+        alert(`You lose! The computer has won the series ${compScore} - ${playerScore}!`);
+        console.log(`You lose! The computer has won the series ${compScore} - ${playerScore}!`);
+    } else {
+        alert(`Tied series ${playerScore} - ${compScore}!`);
+        console.log(`Tied series ${playerScore} - ${compScore}!`);
+    }
+}
+
+
+
