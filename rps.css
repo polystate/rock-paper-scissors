@@ -1,0 +1,85 @@
+body{
+    background: black;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background: lightslategrey;
+    text-align: center;
+    border: 1px solid white;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+#player_options{
+    background: lightslategrey;
+    height: 50%;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    border: 1px solid white;
+}
+
+#display_result{
+    background: black;
+    font: black;
+    position: relative;
+    /* height: 50%; */
+    height: 350px;
+    margin-top: 25em;
+    width: 100%;
+}
+
+p{
+    color: white;
+    text-align: center;
+    font-family: monospace, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   
+}
+
+#congratulations{
+    color: gold;
+    font-family: fantasy, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+
+
+button{
+    height: 5rem;
+    position: relative;
+    border-radius: 1.5rem;
+    outline: none;
+    background: white;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.btn{
+    margin: 5rem;
+    height: 50%;
+    width: 6rem;
+}
+
+h2{
+    border: 1px solid white;
+}
+
+h2:hover{
+    background: lightslategrey;
+}
+
+span:hover{
+    color: gold;
+}
+
+
+
