@@ -12,9 +12,24 @@ header{
 }
 
 img{
-    max-width: 100%;
-    height: auto;
+    /* max-width: 100%;
+    height: auto; */
+    
+    height: 8rem;
+    width: 10rem;
+    /* flex-grow: 1; */
+    
 }
+
+img:hover{
+    cursor: pointer;
+}
+
+/* img:active{
+    border: 10px solid green;
+} */
+
+
 
 #player_options{
     background: lightslategrey;
@@ -23,6 +38,9 @@ img{
     width: 100%;
     text-align: center;
     border: 1px solid white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 #display_result{

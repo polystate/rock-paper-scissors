@@ -1,31 +1,28 @@
 //Global Variables
 
-let btns = document.querySelectorAll(".btn");
+
 let playerScore = 0;
 let compScore = 0;
 let gameLoop = true;
 let playerWin = false;
 let computerWin = false;
 
-//Event Listener Button Click
+//Event Listener Image Click
 
-btns.forEach(btn => {
-    btn.addEventListener('click',function(e){
-        if(gameLoop){
-        playerSelection = undefined;
-        computerSelection = computerPlay();
-        btnClick = e.toElement.id;
-        if(btnClick === "rock") playerSelection = "rock";
-        else if (btnClick === "paper") playerSelection = "paper";
-        else playerSelection = "scissors";
-        result = playRound(playerSelection,computerSelection);
-        calculateResult(result);
-        clearResult();
-        }
-    })
-})
-
-
+function makeSelection(el){
+    if(gameLoop){
+    playerSelection = undefined;
+    computerSelection = computerPlay();
+    imgClick = el.id;
+    if(imgClick === "rock") playerSelection = "rock";
+    else if (imgClick === "paper") playerSelection = "paper";
+    else playerSelection = "scissors";
+    result = playRound(playerSelection,computerSelection);
+    calculateResult(result);
+    clearResult();
+    }
+}
+    
 //Functions
 
 function computerPlay(){
@@ -39,22 +36,37 @@ function playRound(playerSelection,computerSelection){
     switch(playerSelection){
         case "rock":
             if(computerSelection === "scissors"){
+                borderSelect("rock","scissors");
                 return `You Win! Rock beats Scissors. The score is ${playerScore+1} - ${compScore}.`
             } else if(computerSelection === "paper"){
+                borderSelect("rock","paper");
                 return `You Lose! Paper beats Rock. The score is ${playerScore} - ${compScore+1}.`
-            } else return `Both players picked rock. It's a tie. It's still ${playerScore} - ${compScore}.`
+            } else{
+                borderSelect("rock","rock");
+                return `Both players picked rock. It's a tie. It's still ${playerScore} - ${compScore}.`
+            } 
         case "paper":
             if(computerSelection === "rock"){
+                borderSelect("paper","rock");
                 return `You Win! Paper beats Rock. The score is ${playerScore+1} - ${compScore}.`
             } else if(computerSelection === "scissors"){
+                borderSelect("paper","scissors");
                 return `You Lose! Scissors beats Paper. The score is ${playerScore} - ${compScore+1}.`
-            } else return `Both players picked paper. It's a tie. It's still ${playerScore} - ${compScore}.`
+            } else{
+                borderSelect("paper","paper");
+                return `Both players picked paper. It's a tie. It's still ${playerScore} - ${compScore}.`
+            } 
         case "scissors":
             if(computerSelection === "paper"){
+                borderSelect("scissors","paper");
                 return `You Win! Scissors beats Paper. The score is ${playerScore+1} - ${compScore}.`
             } else if(computerSelection === "rock"){
+                borderSelect("scissors","rock");
                 return `You Lose! Rock beats Scissors. The score is ${playerScore} - ${compScore+1}.`
-            } else return `Both players picked scissors. It's a tie. It's still ${playerScore} - ${compScore}.`
+            } else{
+                borderSelect("scissors","scissors");
+                return `Both players picked scissors. It's a tie. It's still ${playerScore} - ${compScore}.`
+            } 
     }
 }
     
@@ -113,7 +125,6 @@ function removeElements(elements){
 
 function gameOver(){
     removeElements(displayP);
-    console.log("Game over. Would you like to play again?")
     gameOverText = document.createElement("h1");
     optionText = document.createElement("h2");
     yesText = document.createElement("span");
@@ -133,7 +144,6 @@ function gameOver(){
     }
     setTimeout(displayOptions,2000)
     yesText.addEventListener("click", function(){
-        console.log('A wise decision, chap... time to play another round.')
         display.removeChild(optionText);
         display.removeChild(gameOverText);
         finalPara.textContent = "";
@@ -146,10 +156,9 @@ function gameOver(){
         setTimeout(function(){
             display.removeChild(restartText);
             gameLoop = true;
-        },3000)
+        },2500)
     });
     noText.addEventListener("click", function(){
-        console.log('No problem! See you next time!')
         display.removeChild(optionText);
         display.removeChild(gameOverText);
         display.removeChild(end_result);
@@ -161,8 +170,25 @@ function gameOver(){
 }
 
 
-
-
+function borderSelect(pID,cID){
+    playerID = document.getElementById(pID);
+    compID = document.getElementById(cID);
+    if(pID !== cID){
+    setTimeout(function(){
+    playerID.style = "border: 10px solid green;"
+    },0)
+    }
+    setTimeout(function(){
+        compID.style = "border: 10px solid red;"
+        if(playerID === compID){
+            playerID.style = "border: 10px solid yellow;"
+        }
+    },1000)
+    setTimeout(borderRemove = () => {
+        playerID.style = "none;"
+        compID.style = "none;"
+    },2000);
+}
 
 
 
