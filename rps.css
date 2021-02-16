@@ -5,6 +5,10 @@ body{
     padding: 0;
 }
 
+h1{
+    font-family: 'Indie Flower','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
 header{
     background: lightslategrey;
     text-align: center;
@@ -12,24 +16,14 @@ header{
 }
 
 img{
-    /* max-width: 100%;
-    height: auto; */
-    
     height: 8rem;
     width: 10rem;
-    /* flex-grow: 1; */
-    
 }
 
 img:hover{
     cursor: pointer;
+    height: 35%;
 }
-
-/* img:active{
-    border: 10px solid green;
-} */
-
-
 
 #player_options{
     background: lightslategrey;
@@ -47,9 +41,8 @@ img:hover{
     background: black;
     font: black;
     position: relative;
-    /* height: 50%; */
     height: 350px;
-    margin-top: 25em;
+    margin-top: 20em;
     width: 100%;
 }
 
@@ -67,28 +60,9 @@ p{
     text-align: center;
 }
 
-
-
-button{
-    height: 5rem;
-    position: relative;
-    border-radius: 1.5rem;
-    outline: none;
-    background: white;
-}
-
-button:hover{
-    cursor: pointer;
-}
-
-.btn{
-    margin: 5rem;
-    height: 50%;
-    width: 6rem;
-}
-
 h2{
     border: 1px solid white;
+    margin-top: 0px;
 }
 
 h2:hover{

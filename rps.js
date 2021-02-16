@@ -1,6 +1,5 @@
 //Global Variables
 
-
 let playerScore = 0;
 let compScore = 0;
 let gameLoop = true;
@@ -9,11 +8,11 @@ let computerWin = false;
 
 //Event Listener Image Click
 
-function makeSelection(el){
+function makeSelection(choice){
     if(gameLoop){
     playerSelection = undefined;
     computerSelection = computerPlay();
-    imgClick = el.id;
+    imgClick = choice.id;
     if(imgClick === "rock") playerSelection = "rock";
     else if (imgClick === "paper") playerSelection = "paper";
     else playerSelection = "scissors";
@@ -125,6 +124,12 @@ function removeElements(elements){
 
 function gameOver(){
     removeElements(displayP);
+    imgRock = document.getElementById("rock");
+    imgPaper = document.getElementById("paper");
+    imgScissors = document.getElementById("scissors");
+    imgRock.style = "border: none;"
+    imgPaper.style = "border: none;"
+    imgScissors.style = "border: none;"
     gameOverText = document.createElement("h1");
     optionText = document.createElement("h2");
     yesText = document.createElement("span");
@@ -173,21 +178,22 @@ function gameOver(){
 function borderSelect(pID,cID){
     playerID = document.getElementById(pID);
     compID = document.getElementById(cID);
-    if(pID !== cID){
+    // if(pID !== cID){
+    // setTimeout(function(){
+    // playerID.style = "border: 10px solid green;"
+    // },0)
+    // }
     setTimeout(function(){
-    playerID.style = "border: 10px solid green;"
-    },0)
-    }
-    setTimeout(function(){
+        playerID.style = "border: 10px solid green;"
         compID.style = "border: 10px solid red;"
         if(playerID === compID){
             playerID.style = "border: 10px solid yellow;"
         }
-    },1000)
+    },0)
     setTimeout(borderRemove = () => {
         playerID.style = "none;"
         compID.style = "none;"
-    },2000);
+    },1000);
 }
 
 
